@@ -26,9 +26,23 @@ class SecondActivity : AppCompatActivity() {
         val userName = prefs.getName()
         b.tvHello.text = "Hola $userName !"
         if(prefs.getColorCheck()){
+            val elColor = getMyColor(prefs.getColor())
             b.constLayout.setBackgroundColor(
-                ContextCompat.getColor(this, R.color.naranja)
+                ContextCompat.getColor(this, elColor)
             )
         }
+    }
+    fun getMyColor(color:String):Int{
+        val resourceColor = when(color){
+            "Lila Claro"-> R.color.purple_200
+            "Lila"-> R.color.purple_500
+            "Lila Fuerte"-> R.color.purple_700
+            "Azul Marino"-> R.color.teal_200
+            "Azul Fuerte"-> R.color.teal_700
+            "Negro"-> R.color.black
+            "Naranja"-> R.color.orange
+            else ->  R.color.white
+        }
+        return resourceColor
     }
 }
